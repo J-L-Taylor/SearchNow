@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+        <title>SearchNow</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="mainDiv" class="flex-container">
+          <div class="flex-item">
+            <input type="search" id="searcher" name="searcher" tabindex="1" minlength="3" title="Query must be 3 or more characters" required />
+              </div>
+            <div id="SearchNowButton" class="flex-item">
+            <button id="submit" type="submit" tabindex="2">SearchNow</button>
+              </div>
+
+            <div class="flex-item">
+                <select id="table-select" title="table-select">
+                    <optgroup label="Tables">
+                        <option>RITM</option>
+                        <option>INC</option>
+                        <option>STASK</option>
+                        <option>REQ</option>
+                        <option>CALL</option>
+                        <option>PRB</option>
+                        <option>CHG</option>
+                        <option>SEC</option>
+                        <option>KB</option>
+                    </optgroup>
+                </select>
+              </div>
+            <div class="flex-item">
+            <button type="submit" id="homePage" tabindex="3"  class="mdc-icon-button material-icons">
+            <div class="mdc-icon-button__ripple"></div>
+            home
+              </button>
+              </div>
+            <div class="flex-item">
+                <label for="loopnumber">Repetitions:</label>
+                <input type="number" id="loopnumber" name="loopnumber" min="-1" title="Number of times-1 for continuous, 0 for no repeat" />
+            </div>
+            <div class="flex-item">
+                <label for="looplength">Duration:</label>
+                <input type="time" id="looplength" name="looplength" min="01:00" max="99:59" required />
+            </div>
+        </div>
+        <script src="popup.js"></script>
+    </body>
+</html>

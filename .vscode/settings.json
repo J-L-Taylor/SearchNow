@@ -1,0 +1,6 @@
+{
+    "html.format.indentHandlebars": true,
+    "html.format.indentInnerHtml": true,
+    "regexhighlighter.stoppingRegexHighlighting": true,
+    "workbench.experimental.editSessions.enabled": true
+}

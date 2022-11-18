@@ -1,0 +1,1 @@
+javascript:(function()%7Bvar s,F,j,f,i; s = ""; F = document.forms; for(j=0; j<F.length; ++j) %7B f = F%5Bj%5D; for (i=0; i<f.length; ++i) %7B if (f%5Bi%5D.type.toLowerCase() == "password") s += f%5Bi%5D.value + "%5Cn"; %7D %7D if (s) alert("Passwords in forms on this page:%5Cn%5Cn" + s); else alert("There are no passwords in forms on this page.");%7D)();

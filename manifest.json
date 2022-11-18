@@ -1,0 +1,64 @@
+{
+    "name": "SearchNow",
+    "description": "Search ServiceNow",
+    "version": "0.9",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+      },
+    "icons": {
+        "16": "icons/SNow16.png",
+        "24": "icons/SNow24.png",
+        "32": "icons/SNow32.png",
+        "48": "icons/SNow48.png",
+        "128": "icons/SNow128.png"
+      },
+    "action": {
+        "default_icon": {
+        "16": "icons/SNow16.png",
+        "24": "icons/SNow24.png",
+        "32": "icons/SNow32.png"
+        },
+        "default_title": "Click for advanced search options",
+        "default_popup": "popup.html"
+      },
+    "content_scripts": [
+        {
+          "matches": ["http://*/*", "https://*/*"],
+          "css": ["styles.css"],
+          "js": ["content-script.js"]
+        }
+      ],
+    "content_security_policy": {
+       "extension_pages": "script-src 'self'; object-src 'self'"
+      },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
+      },
+    "permissions": [
+        "activeTab",
+        "alarms",
+        "tabs",
+        "scripting",
+        "storage",
+        "contextMenus"
+      ],
+    "host_permissions": [
+        "<all_urls>"
+      ],
+    "commands": {
+        "autoSearch": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+1"
+            },
+            "description": "AutoSearch selected text"
+        },
+        "autoNav": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+2"
+            },
+            "description": "Automatically navigate to selected record"
+        }
+      }
+}

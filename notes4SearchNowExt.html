@@ -1,0 +1,33 @@
+.box{
+    display: none;
+    width: 100%;
+}
+
+a:hover + .box,.box:hover{
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+Live previews for <a href="https://en.wikipedia.org/">Wikipedia</a>
+  <div class="box">
+     <iframe title="wikipedia" src="https://en.wikipedia.org/" width = "500px" height = "500px"></iframe>
+  </div> 
+and <a href="https://www.jquery.com/">JQuery</a>
+  <div class="box">
+     <iframe title="JQuery" src="https://www.jquery.com/" width = "500px" height = "500px"></iframe>
+  </div> 
+will appear when these links are moused over.
+
+
+
+Live previews for <a href="https://en.wikipedia.org/">Wikipedia</a>
+  <div class="box" style="display: none;width: 100%;">
+     <iframe src="https://en.wikipedia.org/" width="500px" height="500px">
+     </iframe>
+  </div> 
+and <a href="https://www.jquery.com/">JQuery</a>
+  <div class="box" style="display: none;width: 100%;">
+     <iframe src="https://www.jquery.com/" width="500px" height="500px">
+     </iframe>
+  </div> 
+will appear when these links are moused over.

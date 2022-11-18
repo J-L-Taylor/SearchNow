@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Test Extension Options</title>
+  <script>
+    function getValue() {
+        var term = document.getElementById("mysearch").value;
+        alert(term);
+    }
+  </script>
+</head>
+<body>
+
+<form>
+  <label for="mysearch">Search Website:</label>
+  <input type="search" id="mysearch" placeholder="Type something...">
+  <button type="button" onclick="getValue();">Get Value</button>
+</form>
+
+Favorite color:
+<select id="color">
+ <option value="red">red</option>
+ <option value="green">green</option>
+ <option value="blue">blue</option>
+ <option value="yellow">yellow</option>
+</select>
+
+<label>
+  <input type="checkbox" id="like">
+  I like colors.
+</label>
+
+<div id="status"></div>
+<button id="save">Save</button>
+
+<script src="options.js"></script>
+</body>
+</html>
