@@ -339,15 +339,17 @@ function onCreated() {
 }
 
 function formatPhoneNumber(info) {
+  var selectedText = info.selectionText;
   let cleaned = ('' + selectedText).trim().replace(/\D/g, '');
   let match = cleaned.match(/\d/g);
-  if (match.length == 11) {
+  if (match.length == 11 && match !== null) {
+
     let formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9], match[10]].join('');
     return formattedPhoneNumber;
-  } else if (match.length == 10) {
+  } else if (match.length == 10 && match !== null) {
     let formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match[7], match[8], match[9]].join('');
     return formattedPhoneNumber;
-  } else if (match.length == 7) {
+  } else if (match.length == 7 && match !== null) {
     let formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join('');
     return formattedPhoneNumber;
   } else {
