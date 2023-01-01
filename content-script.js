@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* jshint moz:true */
 /* jshint esversion: 6*/
 // @ts-nocheck
@@ -31,11 +30,12 @@ function handleError(error) {
 
 function notifyBackgroundPage(e) {
   var selection = window.getSelection().toString().trim();
-  const sending = chrome.runtime.sendMessage({
-    messagePayload: "selection"
-  });
+  if (selection !== null) {
+    const sending = chrome.runtime.sendMessage({
+      messagePayload: selection
+    });
   sending.then(handleResponse, handleError);
-}
+}};
 
 window.addEventListener("selectionchange", notifyBackgroundPage);
 

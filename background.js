@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* jshint moz:true */
 /* jshint esversion: 6*/
 // @ts-nocheck
@@ -341,9 +340,8 @@ function onCreated() {
 function formatPhoneNumber(info) {
   var selectedText = info.selectionText;
   let cleaned = ('' + selectedText).trim().replace(/\D/g, '');
-  let match = cleaned.match(/\d/g);
+  let match = cleaned.match(/\d/g) || '';
   if (match.length == 11 && match !== null) {
-
     let formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9], match[10]].join('');
     return formattedPhoneNumber;
   } else if (match.length == 10 && match !== null) {
