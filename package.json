@@ -4,9 +4,8 @@
   "description": "Search ServiceNow",
   "main": ".eslintrc.js",
   "dependencies": {
-    "jshint": "^2.13.1"
+    "jshint": "^2.13.6"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "help"
   },
