@@ -30,7 +30,7 @@ function handleError(error) {
 
 function notifyBackgroundPage(e) {
   var selection = window.getSelection().toString().trim();
-  if (selection !== null) {
+  if (selection && selection !== null && selection !== undefined) {
     const sending = chrome.runtime.sendMessage({
       messagePayload: selection
     });
