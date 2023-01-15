@@ -33,6 +33,7 @@ function notifyBackgroundPage(e) {
   console.log(`Selection: ${selection}`);
   if (selection && selection !== null && selection !== undefined) {
     JSON.stringify(selection);
+    console.log(`Selection: ${selection}`);
     const sending = chrome.runtime.sendMessage({
       messagePayload: selection,
     });
