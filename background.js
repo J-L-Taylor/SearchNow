@@ -189,7 +189,7 @@ var CatchAllTicketNumRegExPattern = /[A-Za-z]{2,5}[0-9]{7,9}/g;
 function handleMessage(request) {
   //console.log(`A content script sent a message: ${request.message}`);
   //sendResponse({ response: "Response from background script" });
-  let selectedText = `${request.messagePayload}`;
+  let selectedText = request.messagePayload;
   return selectedText;
 }
 
@@ -343,13 +343,19 @@ function formatPhoneNumber(info) {
   let match = cleaned.match(/\d/g) || '';
   if (match.length == 11 && match !== null && match !== undefined) {
     let formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9], match[10]].join('');
-    return formattedPhoneNumber;
+    if (formattedPhoneNumber !== undefined) {
+        return formattedPhoneNumber;
+      };
   } else if (match.length == 10 && match !== null && match !== undefined) {
     let formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match[7], match[8], match[9]].join('');
-    return formattedPhoneNumber;
+    if (formattedPhoneNumber !== undefined) {
+        return formattedPhoneNumber;
+      };
   } else if (match.length == 7 && match !== null && match !== undefined) {
     let formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join('');
-    return formattedPhoneNumber;
+    if (formattedPhoneNumber !== undefined) {
+        return formattedPhoneNumber;
+      };
   } else {
     alert(selectedText + ' is not a valid telephone number.');
     }
