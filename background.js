@@ -186,7 +186,7 @@ var CatchAllTicketNumRegExPattern = /[A-Za-z]{2,5}[0-9]{7,9}/g;
     }
 })*/
 
-function handleMessage(request) {
+/*function handleMessage(request) {
   //console.log(`A content script sent a message: ${request.message}`);
   //sendResponse({ response: "Response from background script" });
   let selectedText = request.messagePayload;
@@ -195,7 +195,7 @@ function handleMessage(request) {
 
 chrome.runtime.onMessage.addListener(handleMessage);
 
-var selectedText = handleMessage();
+var selectedText = handleMessage();*/
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
@@ -364,6 +364,7 @@ function formatPhoneNumber(info) {
 var formattedPhoneNumber = formatPhoneNumber();
 
 function autoSearch(info, tab){
+  var selectedText = info.selectionText;
   var encodedSelectedText = encodeURIComponent(selectedText).toString().trim();
   if (KBRegExPattern.test(selectedText)) {
       chrome.tabs.create({
@@ -407,7 +408,7 @@ function autoSearch(info, tab){
       });
   } else if (IPv4RegExPattern.test(selectedText)) {
       chrome.tabs.create({
-          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci.do?sysparm_query=ip_address='+EncodedSelectedTex+'%5Esys_class_name%3Dcmdb_ci_computer', index: tab.index + 1
+          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci.do?sysparm_query=ip_address='+encodedSelectedText+'%5Esys_class_name%3Dcmdb_ci_computer', index: tab.index + 1
       });
   } else if (EmailRegExPattern.test(selectedText)) {
       chrome.tabs.create({
@@ -415,14 +416,14 @@ function autoSearch(info, tab){
       });
   } else if (HostnameRegExPattern.test(selectedText)) {
       chrome.tabs.create({
-          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_computer_list.do?sysparm_query=nameLIKE'+EncodedSelectedTex+'%5EORasset_tagLIKE'+encodedSelectedText+'%5EORserial_numberLIKE'+encodedSelectedText+'%5EORfqdnLIKE'+EncodedSelectedTex+'%5EORdns_domainLIKE'+encodedSelectedText, index: tab.index + 1
+          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_computer_list.do?sysparm_query=nameLIKE'+encodedSelectedText+'%5EORasset_tagLIKE'+encodedSelectedText+'%5EORserial_numberLIKE'+encodedSelectedText+'%5EORfqdnLIKE'+encodedSelectedText+'%5EORdns_domainLIKE'+encodedSelectedText, index: tab.index + 1
       });
   } else if (TeleRegExPattern.test(selectedText)) {
       formatPhoneNumber(info);
       console.log(formattedPhoneNumber);
-      let EncodedSelectedText = encodeURIComponent(formattedPhoneNumber);
+      let encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
       chrome.tabs.create({
-          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sys_user_list.do?sysparm_query=phoneLIKE'+EncodedSelectedTex+'%5EORmobile_phoneLIKE'+EncodedSelectedText+'%5EORhome_phoneLIKE'+EncodedSelectedText, index: tab.index + 1
+          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sys_user_list.do?sysparm_query=phoneLIKE'+encodedSelectedText+'%5EORmobile_phoneLIKE'+encodedSelectedText+'%5EORhome_phoneLIKE'+encodedSelectedText, index: tab.index + 1
       });
   } else {
       chrome.tabs.create({
@@ -432,48 +433,47 @@ function autoSearch(info, tab){
 }
 
 function autoNav(info, tab){
-    var EncodedSelectedText = encodeURIComponent(SelectedText).toString().trim();
-    if (KBRegExPattern.test(SelectedText)) {
-        chrome.tabs.create({
-            url: 'https://gsa.servicenowservices.com/kb_view.do?sysparm_article='+EncodedSelectedText, index: tab.index + 1
-        });
-    } else if (CALLRegExPattern.test(SelectedText)) {
-        chrome.tabs.create({
-            url: 'https://gsa.servicenowservices.com//nav_to.do?uri=new_call.do?sysparm_query=number='+EncodedSelectedText, index: tab.index + 1
-        });
-    } else if (CatchAllTicketNumRegExPattern.test(SelectedText)) {
-        chrome.tabs.create({
-            url: 'https://gsa.servicenowservices.com/nav_to.do?uri=task.do?sysparm_query=number='+EncodedSelectedText, index: tab.index + 1
-        });
-    } else if (IPv4RegExPattern.test(SelectedText)) {
-        chrome.tabs.create({
-            url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_ip_address.do?sysparm_query=ip_address='+EncodedSelectedText, index: tab.index + 1
-        });
-    } else if (EmailRegExPattern.test(SelectedText)) {
-        chrome.tabs.create({
-            url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sys_user.do?sysparm_query=email='+EncodedSelectedText, index: tab.index + 1
-        });
-    } else if (HostnameRegExPattern.test(SelectedText)) {
-        chrome.tabs.create({
-            url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_computer.do?sysparm_query=name='+EncodedSelectedText, index: tab.index + 1
-        });
-    } else if (TeleRegExPattern.test(SelectedText)) {
-        formatPhoneNumber(info);
-        let EncodedSelectedText = encodeURIComponent(formattedPhoneNumber);
-        chrome.tabs.create({
-            url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE'+EncodedSelectedText+'%5EORmobile_phoneLIKE'+EncodedSelectedText+'%5EORhome_phoneLIKE'+EncodedSelectedText, index: tab.index + 1
-        });
-    } else {
-        chrome.tabs.create({
-            url: 'https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search='+EncodedSelectedText, index: tab.index + 1
-        });
-    }
+  var selectedText = info.selectionText;
+  var encodedSelectedText = encodeURIComponent(selectedText).toString().trim();
+  if (KBRegExPattern.test(selectedText)) {
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com/kb_view.do?sysparm_article='+encodedSelectedText, index: tab.index + 1
+      });
+  } else if (CALLRegExPattern.test(selectedText)) {
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com//nav_to.do?uri=new_call.do?sysparm_query=number='+encodedSelectedText, index: tab.index + 1
+      });
+  } else if (CatchAllTicketNumRegExPattern.test(selectedText)) {
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=task.do?sysparm_query=number='+encodedSelectedText, index: tab.index + 1
+      });
+  } else if (IPv4RegExPattern.test(selectedText)) {
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_ip_address.do?sysparm_query=ip_address='+encodedSelectedText, index: tab.index + 1
+      });
+  } else if (EmailRegExPattern.test(selectedText)) {
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sys_user.do?sysparm_query=email='+encodedSelectedText, index: tab.index + 1
+      });
+  } else if (HostnameRegExPattern.test(selectedText)) {
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_computer.do?sysparm_query=name='+encodedSelectedText, index: tab.index + 1
+      });
+  } else if (TeleRegExPattern.test(selectedText)) {
+      formatPhoneNumber(info);
+      let encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE'+encodedSelectedText+'%5EORmobile_phoneLIKE'+encodedSelectedText+'%5EORhome_phoneLIKE'+encodedSelectedText, index: tab.index + 1
+      });
+  } else {
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search='+encodedSelectedText, index: tab.index + 1
+      });
+  }
 }
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-
-    var EncodedSelectedText = encodeURIComponent(info.selectionText).toString();
-
+    var encodedSelectedText = encodeURIComponent(info.selectionText).toString();
     switch (info.menuItemId) {
         case "autoNavTo":
             autoNav(info, tab);
@@ -483,79 +483,79 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         break;
         case "kbChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/$knowledge.do?sysparm_type_filter=all&sysparm_order=relevancy&query='+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/$knowledge.do?sysparm_type_filter=all&sysparm_order=relevancy&query='+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "incChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/incident_list.do?sysparm_query=123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/incident_list.do?sysparm_query=123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "ritmChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/sc_req_item_list.do?sysparm_query=123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/sc_req_item_list.do?sysparm_query=123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "staskChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/sc_task_list.do?sysparm_query=123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/sc_task_list.do?sysparm_query=123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "reqChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/sc_request_list.do?sysparm_query=123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/sc_request_list.do?sysparm_query=123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "callChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/new_call_list.do?sysparm_query=123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/new_call_list.do?sysparm_query=123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "prbChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/problem_list.do?sysparm_query=123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/problem_list.do?sysparm_query=123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "chgChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/change_request_list.do?sysparm_query=123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/change_request_list.do?sysparm_query=123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "secChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/u_security_inc_list.do?sysparm_query=123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/u_security_inc_list.do?sysparm_query=123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "chatChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/chat_queue_entry_list.do?sysparm_query=%5EGOTO123TEXTQUERY321%3D'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/chat_queue_entry_list.do?sysparm_query=%5EGOTO123TEXTQUERY321%3D'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "ipv4Child":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/cmdb_ci_list.do?sysparm_query=ip_addressLIKE'+EncodedSelectedText+'%5Esys_class_name%3Dcmdb_ci_computer', index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/cmdb_ci_list.do?sysparm_query=ip_addressLIKE'+encodedSelectedText+'%5Esys_class_name%3Dcmdb_ci_computer', index: tab.index + 1
             });
         break;
         case "emailChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=emailLIKE'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=emailLIKE'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "hostnameChild":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/cmdb_ci_computer_list.do?sysparm_query=nameLIKE'+EncodedSelectedText+'%5EORasset_tagLIKE'+EncodedSelectedText+'%5EORserial_numberLIKE'+EncodedSelectedText+'%5EORfqdnLIKE'+EncodedSelectedText+'%5EORdns_domainLIKE'+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/cmdb_ci_computer_list.do?sysparm_query=nameLIKE'+encodedSelectedText+'%5EORasset_tagLIKE'+encodedSelectedText+'%5EORserial_numberLIKE'+encodedSelectedText+'%5EORfqdnLIKE'+encodedSelectedText+'%5EORdns_domainLIKE'+encodedSelectedText, index: tab.index + 1
             });
         break;
         case "teleChild":
             formatPhoneNumber(info);
-            var EncodedSelectedText4Tele = encodeURIComponent(formattedPhoneNumber);
+            var encodedSelectedText4Tele = encodeURIComponent(formattedPhoneNumber);
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE'+EncodedSelectedText4Tele+'%5EORmobile_phoneLIKE'+EncodedSelectedText4Tele+'%5EORhome_phoneLIKE'+EncodedSelectedText4Tele, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE'+encodedSelectedText4Tele+'%5EORmobile_phoneLIKE'+encodedSelectedText4Tele+'%5EORhome_phoneLIKE'+encodedSelectedText4Tele, index: tab.index + 1
             });
         break;
         case "global":
             chrome.tabs.create({
-                url: 'https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search='+EncodedSelectedText, index: tab.index + 1
+                url: 'https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search='+encodedSelectedText, index: tab.index + 1
             });
         break;
     }
