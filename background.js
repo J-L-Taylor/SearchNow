@@ -196,13 +196,13 @@ chrome.runtime.onMessage.addListener(handleMessage);
 
 var selectedText = handleMessage();*/
 
-function getSelectionText() {
+/*function getSelectionText() {
   chrome.contextMenus.onClicked.addListener((info) => {
     return info.selectionText;
   })
 }
 
-var selectedText = getSelectionText();
+var selectedText = getSelectionText();*/
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
@@ -344,40 +344,41 @@ function onCreated() {
     }
 }
 
-function formatPhoneNumber(selectedText) {
-  //var selectedText = info.selectionText;
-  let cleaned = '';
-  let match = '';
-  let formattedPhoneNumber = '';
-  let cleaned = ('' + selectedText).trim().replace(/\D/g, '');
-  let match = cleaned.match(/\d/g) || '';
-  if (match.length == 11 && match !== null && match !== undefined) {
-    let formattedPhoneNumber = '';
-    let formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9], match[10]].join('').toString();
-      if (formattedPhoneNumber !== undefined) {
-          return formattedPhoneNumber;
-        };
-  } else if (match.length == 10 && match !== null && match !== undefined) {
-    let formattedPhoneNumber = '';
-    let formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match[7], match[8], match[9]].join('').toString();
-      if (formattedPhoneNumber !== undefined) {
-          return formattedPhoneNumber;
-        };
-  } else if (match.length == 7 && match !== null && match !== undefined) {
-    let formattedPhoneNumber = '';
-    let formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join('').toString();
-      if (formattedPhoneNumber !== undefined) {
-          return formattedPhoneNumber;
-       };
-  } else {
-      console.log(selectedText + ' is not a valid telephone number.');
-    }
+/*function formatPhoneNumber(info) {
+  if (info.selectionText) {
+    let selectedText = '' + info.selectionText;
+    let cleaned = '';
+    let match = '';
+    cleaned = ('' + selectedText).trim().replace(/\D/g, '');
+    match = cleaned.match(/\d/g) || '';
+    if (match.length === 11 && match !== null && match !== undefined) {
+      let formattedPhoneNumber = '';
+      formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('') || '';
+        if (formattedPhoneNumber !== undefined) {
+            return formattedPhoneNumber;
+          };
+    } else if (match.length === 10 && match !== null && match !== undefined) {
+      let formattedPhoneNumber = '';
+      let formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('') || '';
+        if (formattedPhoneNumber !== undefined) {
+            return formattedPhoneNumber;
+          };
+    } else if (match.length === 7 && match !== null && match !== undefined) {
+      let formattedPhoneNumber = '';
+      let formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('') || '';
+        if (formattedPhoneNumber !== undefined) {
+            return formattedPhoneNumber;
+         };
+    } else {
+        console.log(selectedText + ' is not a valid telephone number.');
+      }
+  }
 }
 
-var formattedPhoneNumber = formatPhoneNumber();
+var formattedPhoneNumber = formatPhoneNumber();*/
 
-function autoSearch(selectedText, tab){
-  //var selectedText = info.selectionText;
+function autoSearch(info, tab){
+  var selectedText = info.selectionText;
   var encodedSelectedText = encodeURIComponent(selectedText).toString().trim();
   if (KBRegExPattern.test(selectedText)) {
       chrome.tabs.create({
@@ -432,7 +433,22 @@ function autoSearch(selectedText, tab){
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_computer_list.do?sysparm_query=nameLIKE' + encodedSelectedText + '%5EORasset_tagLIKE' + encodedSelectedText + '%5EORserial_numberLIKE' + encodedSelectedText + '%5EORfqdnLIKE' + encodedSelectedText + '%5EORdns_domainLIKE' + encodedSelectedText, index: tab.index + 1
       });
   } else if (TeleRegExPattern.test(selectedText)) {
-      formatPhoneNumber(selectedText);
+      let cleaned = '';
+      let match = '';
+      cleaned = ('' + selectedText).trim().replace(/\D/g, '');
+      match = cleaned.match(/\d/g) || '';
+      if (match.length == 11) {
+        let formattedPhoneNumber = '';
+        formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('');
+      } else if (match.length == 10) {
+        let formattedPhoneNumber = '';
+        formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('');
+      } else if (match.length == 7) {
+        let formattedPhoneNumber = '';
+        formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('');
+      } else {
+          console.log(selectedText + ' is not a valid telephone number.');
+        }
       console.log(formattedPhoneNumber);
       let encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
       chrome.tabs.create({
@@ -446,7 +462,7 @@ function autoSearch(selectedText, tab){
 }
 
 function autoNav(info, tab){
-  //var selectedText = info.selectionText;
+  var selectedText = info.selectionText;
   var encodedSelectedText = encodeURIComponent(selectedText).toString().trim();
   if (KBRegExPattern.test(selectedText)) {
       chrome.tabs.create({
@@ -473,11 +489,27 @@ function autoNav(info, tab){
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_computer.do?sysparm_query=name=' + encodedSelectedText, index: tab.index + 1
       });
   } else if (TeleRegExPattern.test(selectedText)) {
-      formatPhoneNumber(info);
-      let encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
-      chrome.tabs.create({
-          url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE' + encodedSelectedText + '%5EORmobile_phoneLIKE' + encodedSelectedText + '%5EORhome_phoneLIKE' + encodedSelectedText, index: tab.index + 1
-      });
+    let cleaned = '';
+    let match = '';
+    cleaned = ('' + selectedText).trim().replace(/\D/g, '');
+    match = cleaned.match(/\d/g) || '';
+    if (match.length == 11) {
+      let formattedPhoneNumber = '';
+      formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('');
+    } else if (match.length == 10) {
+      let formattedPhoneNumber = '';
+      formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('');
+    } else if (match.length == 7) {
+      let formattedPhoneNumber = '';
+      formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('');
+    } else {
+        console.log(selectedText + ' is not a valid telephone number.');
+      }
+  console.log(formattedPhoneNumber);
+  let encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
+    chrome.tabs.create({
+        url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE' + encodedSelectedText + '%5EORmobile_phoneLIKE' + encodedSelectedText + '%5EORhome_phoneLIKE' + encodedSelectedText, index: tab.index + 1
+    });
   } else {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search=' + encodedSelectedText, index: tab.index + 1
