@@ -438,13 +438,13 @@ function autoSearch(info, tab){
       cleaned = ('' + selectedText).trim().replace(/\D/g, '');
       match = cleaned.match(/\d/g) || '';
       if (match.length == 11) {
-        let formattedPhoneNumber = '';
+        var formattedPhoneNumber = '';
         formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('');
       } else if (match.length == 10) {
-        let formattedPhoneNumber = '';
+        var formattedPhoneNumber = '';
         formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('');
       } else if (match.length == 7) {
-        let formattedPhoneNumber = '';
+        var formattedPhoneNumber = '';
         formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('');
       } else {
           console.log(selectedText + ' is not a valid telephone number.');
