@@ -33,178 +33,16 @@ var HostnameRegExPattern = /[A-PR-VX-Z](CO|01|02|03|04|05|06|07|08|09|10|11|EU|A
 var TeleRegExPattern = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?/;
 var CatchAllTicketNumRegExPattern = /[A-Za-z]{2,5}[0-9]{7,9}/g;
 
-/*var cm_clickHandler = function(clickData, tab) {
-    alert('Selected ' + clickData.selectionText + ' in ' + tab.url);
-};*/
 
-/*document.addEventListener('selectionchange', () => {
-    var selection = window.getSelection().toString().trim();
-    if (selection){
-        console.log(`Selection: ${selection}`);
-        if (KBRegExPattern.test(selection)){
-            chrome.contextMenus.removeAll();
-            chrome.contextMenus.create({
-                  id: 'kbNav',
-                  title: 'Open article %s',
-                  type: 'normal',
-                  contexts: ['selection'],
-                }, onCreated); 
-        } else if (CALLRegExPattern.test(selection)){
-            chrome.contextMenus.removeAll();
-            chrome.contextMenus.create({
-                  id: 'callNav',
-                  title: 'Open call record %s',
-                  type: 'normal',
-                  contexts: ['selection'],
-                }, onCreated); 
-        } else if (CatchAllTicketNumRegExPattern.test(selection)){
-            chrome.contextMenus.removeAll();
-            chrome.contextMenus.create({
-                  id: 'ticketNav',
-                  title: 'Open ticket %s',
-                  type: 'normal',
-                  contexts: ['selection'],
-                }, onCreated);
-        } else if (IPv4RegExPattern.test(selection)){
-            chrome.contextMenus.removeAll();
-            chrome.contextMenus.create({
-                  id: 'ipNav',
-                  title: 'Open IP record %s',
-                  type: 'normal',
-                  contexts: ['selection'],
-                }, onCreated);
-        }
-      }
-    })*/
 
-/*chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
-    var contextMenuID = info.menuItemId;
-    if (msg.request === 'updateContextMenu') {
-      var selectedText = msg.selection;
-      if (KBRegExPattern.test(selectedText)) {
-        if (selectedText == '') {
-            // Remove the context menu entry
-            if (contextMenuID != null) {
-                chrome.contextMenus.remove(contextMenuID);
-                contextMenuID = null; // Invalidate entry now to avoid race conditions
-            } // else: No contextmenu ID, so nothing to remove
-        } else { // Add/update context menu entry
-            var options = {
-                title: "Nav to KB",
-                // contexts: ['selection'],
-                //onclick: cm_clickHandler
-            };
-            if (contextMenuID != null) {
-                chrome.contextMenus.update(contextMenuID, options);
-            } else {
-                // Create new menu, and remember the ID
-                contextMenuID = chrome.contextMenus.create(options);
-            }
-        }
-      } else if (CatchAllTicketNumRegExPattern.test(selectedText)) {
-        if (selectedText == '') {
-            // Remove the context menu entry
-            if (contextMenuID != null) {
-                chrome.contextMenus.remove(contextMenuID);
-                contextMenuID = null; // Invalidate entry now to avoid race conditions
-            } // else: No contextmenu ID, so nothing to remove
-        } else { // Add/update context menu entry
-            var options = {
-                title: "Nav to Ticket",
-                // contexts: ['selection'],
-                //onclick: cm_clickHandler
-            }
-            if (contextMenuID != null) {
-                chrome.contextMenus.update(contextMenuID, options);
-            } else {
-                // Create new menu, and remember the ID
-                contextMenuID = chrome.contextMenus.create(options);
-            }
-        }
-      } else if (IPv4RegExPattern.test(selectedText)) {
-        if (selectedText == '') {
-            // Remove the context menu entry
-            if (contextMenuID != null) {
-                chrome.contextMenus.remove(contextMenuID);
-                contextMenuID = null; // Invalidate entry now to avoid race conditions
-            } // else: No contextmenu ID, so nothing to remove
-        } else { // Add/update context menu entry
-            var options = {
-                title: "Nav to IPv4 Record",
-                // contexts: ['selection'],
-                //onclick: cm_clickHandler
-            }
-            if (contextMenuID != null) {
-                chrome.contextMenus.update(contextMenuID, options);
-            } else {
-                // Create new menu, and remember the ID
-                contextMenuID = chrome.contextMenus.create(options);
-            }
-        }
-      } else if (EmailRegExPattern.test(selectedText)) {
-        if (selectedText == '') {
-            // Remove the context menu entry
-            if (contextMenuID != null) {
-                chrome.contextMenus.remove(contextMenuID);
-                contextMenuID = null; // Invalidate entry now to avoid race conditions
-            } // else: No contextmenu ID, so nothing to remove
-        } else { // Add/update context menu entry
-            var options = {
-                title: "Nav to User profile",
-                // contexts: ['selection'],
-                //onclick: cm_clickHandler
-            }
-            if (contextMenuID != null) {
-                chrome.contextMenus.update(contextMenuID, options);
-            } else {
-                // Create new menu, and remember the ID
-                contextMenuID = chrome.contextMenus.create(options);
-            }
-        }
-      } else if (HostnameRegExPattern.test(selectedText)) {
-        if (selectedText == '') {
-            // Remove the context menu entry
-            if (contextMenuID != null) {
-                chrome.contextMenus.remove(contextMenuID);
-                contextMenuID = null; // Invalidate entry now to avoid race conditions
-            } // else: No contextmenu ID, so nothing to remove
-        } else { // Add/update context menu entry
-            var options = {
-                title: "Nav to Config Item Record",
-                // contexts: ['selection'],
-                //onclick: cm_clickHandler
-            }
-            if (contextMenuID != null) {
-                chrome.contextMenus.update(contextMenuID, options);
-            } else {
-                // Create new menu, and remember the ID
-                contextMenuID = chrome.contextMenus.create(options);
-            }
-        }
-      }
-    }
-})*/
-
-/*function handleMessage(request) {
-  //console.log(`A content script sent a message: ${request.message}`);
-  //sendResponse({ response: "Response from background script" });
-  let selectedText = request.messagePayload;
-  return selectedText;
+function handleMessage(request, sender, sendResponse) {
+  console.log(`A content script sent a message: ${request.greeting}`);
+  sendResponse({ response: `${request.greeting}` });
 }
 
 chrome.runtime.onMessage.addListener(handleMessage);
 
-var selectedText = handleMessage();*/
-
-/*function getSelectionText() {
-  chrome.contextMenus.onClicked.addListener((info) => {
-    return info.selectionText;
-  })
-}
-
-var selectedText = getSelectionText();*/
-
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener((info) => {
   chrome.contextMenus.create({
       id: 'autoNavTo',
       title: 'Open "%s" in new tab',
@@ -334,7 +172,37 @@ chrome.runtime.onInstalled.addListener(() => {
         contexts: ['selection'],
         parentId: "manualSearch"
       }, onCreated());
-});
+  if(info.selectionText){
+    chrome.contextMenus.removeAll();
+    if(KBRegExPattern.test(info.selectionText)){
+      chrome.contextMenus.create({
+        id: 'kbNav',
+        title: 'Open article %s',
+        type: 'normal',
+        contexts: ['selection'],
+      }); 
+      chrome.contextMenus.create({
+        id: 'kbSearch',
+        title: 'Search KB for %s',
+        type: 'normal',
+        contexts: ['selection'],
+      });
+    } else if (CALLRegExPattern.test(info.selectionText)) {
+      chrome.contextMenus.create({
+        id: 'callNav',
+        title: 'Open call %s',
+        type: 'normal',
+        contexts: ['selection'],
+      });
+      chrome.contextMenus.create({
+        id: 'callSearch',
+        title: 'Search calls for %s',
+        type: 'normal',
+        contexts: ['selection'],
+      });
+    }
+  }
+})
 
 function onCreated() {
     if (chrome.runtime.lastError) {
@@ -344,113 +212,94 @@ function onCreated() {
     }
 }
 
-/*function formatPhoneNumber(info) {
-  if (info.selectionText) {
-    let selectedText = '' + info.selectionText;
-    let cleaned = '';
-    let match = '';
-    cleaned = ('' + selectedText).trim().replace(/\D/g, '');
-    match = cleaned.match(/\d/g) || '';
-    if (match.length === 11 && match !== null && match !== undefined) {
-      let formattedPhoneNumber = '';
-      formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('') || '';
-        if (formattedPhoneNumber !== undefined) {
-            return formattedPhoneNumber;
-          };
-    } else if (match.length === 10 && match !== null && match !== undefined) {
-      let formattedPhoneNumber = '';
-      let formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('') || '';
-        if (formattedPhoneNumber !== undefined) {
-            return formattedPhoneNumber;
-          };
-    } else if (match.length === 7 && match !== null && match !== undefined) {
-      let formattedPhoneNumber = '';
-      let formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('') || '';
-        if (formattedPhoneNumber !== undefined) {
-            return formattedPhoneNumber;
-         };
+function formatPhoneNumber(info) {
+  var cleaned = ('' + info.selectionText).trim().replace(/\D/g, '');
+  var match = cleaned.match(/\d/g);
+  if(match){
+    var formattedPhoneNumber = info.selectionText
+    if (match.length == 11) {
+      formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('');
+    } else if (match.length == 10) {
+      formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('');
+    } else if (match.length == 7) {
+      formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('');
     } else {
-        console.log(selectedText + ' is not a valid telephone number.');
-      }
+        console.log(info.selectionText + ' is not a valid telephone number.');
+    }
   }
+  return formattedPhoneNumber
 }
 
-var formattedPhoneNumber = formatPhoneNumber();*/
-
 function autoSearch(info, tab){
-  var selectedText = info.selectionText;
-  var encodedSelectedText = encodeURIComponent(selectedText).toString().trim();
-  if (KBRegExPattern.test(selectedText)) {
+  var encodedSelectedText = encodeURIComponent(info.selectionText).toString().trim();
+  if (KBRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=kb_view.do?sysparm_article=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (INCRegExPattern.test(selectedText)) {
+  } else if (INCRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=incident.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (RITMRegExPattern.test(selectedText)) {
+  } else if (RITMRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sc_req_item.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (STASKRegExPattern.test(selectedText)) {
+  } else if (STASKRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sc_task.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (REQRegExPattern.test(selectedText)) {
+  } else if (REQRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sc_request.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (CALLRegExPattern.test(selectedText)) {
+  } else if (CALLRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=new_call.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (PRBRegExPattern.test(selectedText)) {
+  } else if (PRBRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=problem.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (CHGRegExPattern.test(selectedText)) {
+  } else if (CHGRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=change_request.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (SECRegExPattern.test(selectedText)) {
+  } else if (SECRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=u_security_inc.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (CHATRegExPattern.test(selectedText)) {
+  } else if (CHATRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=chat_queue_entry.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (IPv4RegExPattern.test(selectedText)) {
+  } else if (IPv4RegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci.do?sysparm_query=ip_address=' + encodedSelectedText + '%5Esys_class_name%3Dcmdb_ci_computer', index: tab.index + 1
       });
-  } else if (EmailRegExPattern.test(selectedText)) {
+  } else if (EmailRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sys_user_list.do?sysparm_query=emailLIKE' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (HostnameRegExPattern.test(selectedText)) {
+  } else if (HostnameRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_computer_list.do?sysparm_query=nameLIKE' + encodedSelectedText + '%5EORasset_tagLIKE' + encodedSelectedText + '%5EORserial_numberLIKE' + encodedSelectedText + '%5EORfqdnLIKE' + encodedSelectedText + '%5EORdns_domainLIKE' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (TeleRegExPattern.test(selectedText)) {
-      let cleaned = '';
-      let match = '';
-      cleaned = ('' + selectedText).trim().replace(/\D/g, '');
-      match = cleaned.match(/\d/g) || '';
+  } else if (TeleRegExPattern.test(info.selectionText)) {
+    var cleaned = ('' + info.selectionText).trim().replace(/\D/g, '');
+    var match = cleaned.match(/\d/g);
+    if(match){
+      var formattedPhoneNumber = info.selectionText
       if (match.length == 11) {
-        var formattedPhoneNumber = '';
         formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('');
       } else if (match.length == 10) {
-        var formattedPhoneNumber = '';
         formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('');
       } else if (match.length == 7) {
-        var formattedPhoneNumber = '';
         formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('');
       } else {
-          console.log(selectedText + ' is not a valid telephone number.');
-        }
+          console.log(info.selectionText + ' is not a valid telephone number.');
+      }
       console.log(formattedPhoneNumber);
-      let encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
+      var encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sys_user_list.do?sysparm_query=phoneLIKE' + encodedSelectedText + '%5EORmobile_phoneLIKE' + encodedSelectedText + '%5EORhome_phoneLIKE' + encodedSelectedText, index: tab.index + 1
       });
@@ -459,63 +308,59 @@ function autoSearch(info, tab){
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=$sn_global_search_results.do?sysparm_search=' + encodedSelectedText, index: tab.index + 1
       });
   }
-}
+}}
 
 function autoNav(info, tab){
-  var selectedText = info.selectionText;
-  var encodedSelectedText = encodeURIComponent(selectedText).toString().trim();
-  if (KBRegExPattern.test(selectedText)) {
+  var encodedSelectedText = encodeURIComponent(info.selectionText).toString().trim();
+  if (KBRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/kb_view.do?sysparm_article=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (CALLRegExPattern.test(selectedText)) {
+  } else if (CALLRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com//nav_to.do?uri=new_call.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (CatchAllTicketNumRegExPattern.test(selectedText)) {
+  } else if (CatchAllTicketNumRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=task.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (IPv4RegExPattern.test(selectedText)) {
+  } else if (IPv4RegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_ip_address.do?sysparm_query=ip_address=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (EmailRegExPattern.test(selectedText)) {
+  } else if (EmailRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sys_user.do?sysparm_query=email=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (HostnameRegExPattern.test(selectedText)) {
+  } else if (HostnameRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/nav_to.do?uri=cmdb_ci_computer.do?sysparm_query=name=' + encodedSelectedText, index: tab.index + 1
       });
-  } else if (TeleRegExPattern.test(selectedText)) {
-    let cleaned = '';
-    let match = '';
-    cleaned = ('' + selectedText).trim().replace(/\D/g, '');
-    match = cleaned.match(/\d/g) || '';
-    if (match.length == 11) {
-      let formattedPhoneNumber = '';
-      formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('');
-    } else if (match.length == 10) {
-      let formattedPhoneNumber = '';
-      formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('');
-    } else if (match.length == 7) {
-      let formattedPhoneNumber = '';
-      formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('');
-    } else {
-        console.log(selectedText + ' is not a valid telephone number.');
+  } else if (TeleRegExPattern.test(info.selectionText)) {
+    var cleaned = ('' + info.selectionText).trim().replace(/\D/g, '');
+    var match = cleaned.match(/\d/g);
+    if(match){
+      var formattedPhoneNumber = info.selectionText
+      if (match.length == 11) {
+        formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('');
+      } else if (match.length == 10) {
+        formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('');
+      } else if (match.length == 7) {
+        formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('');
+      } else {
+          console.log(info.selectionText + ' is not a valid telephone number.');
       }
-  console.log(formattedPhoneNumber);
-  let encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
-    chrome.tabs.create({
-        url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE' + encodedSelectedText + '%5EORmobile_phoneLIKE' + encodedSelectedText + '%5EORhome_phoneLIKE' + encodedSelectedText, index: tab.index + 1
+      console.log(formattedPhoneNumber);
+      var encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
+      chrome.tabs.create({
+          url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE' + encodedSelectedText + '%5EORmobile_phoneLIKE' + encodedSelectedText + '%5EORhome_phoneLIKE' + encodedSelectedText, index: tab.index + 1
     });
   } else {
       chrome.tabs.create({
           url: 'https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search=' + encodedSelectedText, index: tab.index + 1
       });
   }
-}
+}}
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     var encodedSelectedText = encodeURIComponent(info.selectionText).toString();
@@ -592,7 +437,29 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             });
         break;
         case "teleChild":
-            formatPhoneNumber(info);
+          var cleaned = ('' + info.selectionText).trim().replace(/\D/g, '');
+          var match = cleaned.match(/\d/g);
+          if(match){
+            var formattedPhoneNumber = info.selectionText
+            if (match.length == 11) {
+              formattedPhoneNumber = ['(', match[1], match[2], match[3], ') ', match[4], match[5], match[6], '-', match[7], match[8], match[9],   match[10]].join('');
+            } else if (match.length == 10) {
+              formattedPhoneNumber = ['(', match[0], match[1], match[2], ') ', match[3], match[4], match[5], '-', match[6], match [7], match[8], match[9]].join('');
+            } else if (match.length == 7) {
+              formattedPhoneNumber = [match[0], match[1], match[2], '-', match[3], match[4], match[5], match[6]].join ('');
+            } else {
+                console.log(info.selectionText + ' is not a valid telephone number.');
+            }
+            console.log(formattedPhoneNumber);
+            var encodedSelectedText = encodeURIComponent(formattedPhoneNumber);
+            chrome.tabs.create({
+                url: 'https://gsa.servicenowservices.com/nav_to.do?uri=sys_user_list.do?sysparm_query=phoneLIKE' + encodedSelectedText + '%5EORmobile_phoneLIKE' + encodedSelectedText +      '%5EORhome_phoneLIKE' + encodedSelectedText, index: tab.index + 1
+            });
+          } else {
+              chrome.tabs.create({
+                  url: 'https://gsa.servicenowservices.com/nav_to.do?uri=$sn_global_search_results.do?sysparm_search=' + encodedSelectedText, index: tab.index + 1
+              });
+          }
             var encodedSelectedText4Tele = encodeURIComponent(formattedPhoneNumber);
             chrome.tabs.create({
                 url: 'https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=phoneLIKE' + encodedSelectedText4Tele + '%5EORmobile_phoneLIKE' + encodedSelectedText4Tele + '%5EORhome_phoneLIKE' + encodedSelectedText4Tele, index: tab.index + 1

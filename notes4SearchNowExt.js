@@ -8,6 +8,158 @@ const fullEncodedURL = encodeURIComponent(topAndSecondLevelOfURL+tableOfURL+frag
 avascript: for ( ; ; ) {timeout=prompt("Set timeout [s]"); current=location.href; if(timeout>0) setTimeout('reload()',1000*timeout); else location.replace(current); function reload(){ setTimeout('reload()',1000*timeout); fr4me='<frameset cols=\'*\'>\n<frame src=\''+current+'\'/>'; fr4me+='</frameset>'; with(document){write(fr4me);void(close())}; }}
 
 
+/*var cm_clickHandler = function(clickData, tab) {
+    alert('Selected ' + clickData.selectionText + ' in ' + tab.url);
+};*/
+
+/*document.addEventListener('selectionchange', () => {
+    var selection = window.getSelection().toString().trim();
+    if (selection){
+        console.log(`Selection: ${selection}`);
+        if (KBRegExPattern.test(selection)){
+            chrome.contextMenus.removeAll();
+            chrome.contextMenus.create({
+                  id: 'kbNav',
+                  title: 'Open article %s',
+                  type: 'normal',
+                  contexts: ['selection'],
+                }, onCreated); 
+        } else if (CALLRegExPattern.test(selection)){
+            chrome.contextMenus.removeAll();
+            chrome.contextMenus.create({
+                  id: 'callNav',
+                  title: 'Open call record %s',
+                  type: 'normal',
+                  contexts: ['selection'],
+                }, onCreated); 
+        } else if (CatchAllTicketNumRegExPattern.test(selection)){
+            chrome.contextMenus.removeAll();
+            chrome.contextMenus.create({
+                  id: 'ticketNav',
+                  title: 'Open ticket %s',
+                  type: 'normal',
+                  contexts: ['selection'],
+                }, onCreated);
+        } else if (IPv4RegExPattern.test(selection)){
+            chrome.contextMenus.removeAll();
+            chrome.contextMenus.create({
+                  id: 'ipNav',
+                  title: 'Open IP record %s',
+                  type: 'normal',
+                  contexts: ['selection'],
+                }, onCreated);
+        }
+      }
+    })*/
+
+/*chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+    var contextMenuID = info.menuItemId;
+    if (msg.request === 'updateContextMenu') {
+      var selectedText = msg.selection;
+      if (KBRegExPattern.test(selectedText)) {
+        if (selectedText == '') {
+            // Remove the context menu entry
+            if (contextMenuID != null) {
+                chrome.contextMenus.remove(contextMenuID);
+                contextMenuID = null; // Invalidate entry now to avoid race conditions
+            } // else: No contextmenu ID, so nothing to remove
+        } else { // Add/update context menu entry
+            var options = {
+                title: "Nav to KB",
+                // contexts: ['selection'],
+                //onclick: cm_clickHandler
+            };
+            if (contextMenuID != null) {
+                chrome.contextMenus.update(contextMenuID, options);
+            } else {
+                // Create new menu, and remember the ID
+                contextMenuID = chrome.contextMenus.create(options);
+            }
+        }
+      } else if (CatchAllTicketNumRegExPattern.test(selectedText)) {
+        if (selectedText == '') {
+            // Remove the context menu entry
+            if (contextMenuID != null) {
+                chrome.contextMenus.remove(contextMenuID);
+                contextMenuID = null; // Invalidate entry now to avoid race conditions
+            } // else: No contextmenu ID, so nothing to remove
+        } else { // Add/update context menu entry
+            var options = {
+                title: "Nav to Ticket",
+                // contexts: ['selection'],
+                //onclick: cm_clickHandler
+            }
+            if (contextMenuID != null) {
+                chrome.contextMenus.update(contextMenuID, options);
+            } else {
+                // Create new menu, and remember the ID
+                contextMenuID = chrome.contextMenus.create(options);
+            }
+        }
+      } else if (IPv4RegExPattern.test(selectedText)) {
+        if (selectedText == '') {
+            // Remove the context menu entry
+            if (contextMenuID != null) {
+                chrome.contextMenus.remove(contextMenuID);
+                contextMenuID = null; // Invalidate entry now to avoid race conditions
+            } // else: No contextmenu ID, so nothing to remove
+        } else { // Add/update context menu entry
+            var options = {
+                title: "Nav to IPv4 Record",
+                // contexts: ['selection'],
+                //onclick: cm_clickHandler
+            }
+            if (contextMenuID != null) {
+                chrome.contextMenus.update(contextMenuID, options);
+            } else {
+                // Create new menu, and remember the ID
+                contextMenuID = chrome.contextMenus.create(options);
+            }
+        }
+      } else if (EmailRegExPattern.test(selectedText)) {
+        if (selectedText == '') {
+            // Remove the context menu entry
+            if (contextMenuID != null) {
+                chrome.contextMenus.remove(contextMenuID);
+                contextMenuID = null; // Invalidate entry now to avoid race conditions
+            } // else: No contextmenu ID, so nothing to remove
+        } else { // Add/update context menu entry
+            var options = {
+                title: "Nav to User profile",
+                // contexts: ['selection'],
+                //onclick: cm_clickHandler
+            }
+            if (contextMenuID != null) {
+                chrome.contextMenus.update(contextMenuID, options);
+            } else {
+                // Create new menu, and remember the ID
+                contextMenuID = chrome.contextMenus.create(options);
+            }
+        }
+      } else if (HostnameRegExPattern.test(selectedText)) {
+        if (selectedText == '') {
+            // Remove the context menu entry
+            if (contextMenuID != null) {
+                chrome.contextMenus.remove(contextMenuID);
+                contextMenuID = null; // Invalidate entry now to avoid race conditions
+            } // else: No contextmenu ID, so nothing to remove
+        } else { // Add/update context menu entry
+            var options = {
+                title: "Nav to Config Item Record",
+                // contexts: ['selection'],
+                //onclick: cm_clickHandler
+            }
+            if (contextMenuID != null) {
+                chrome.contextMenus.update(contextMenuID, options);
+            } else {
+                // Create new menu, and remember the ID
+                contextMenuID = chrome.contextMenus.create(options);
+            }
+        }
+      }
+    }
+})*/
+
 
 https://gsa.servicenowservices.com/nav_to.do?uri=task.do?sysparm_query=number=
 
