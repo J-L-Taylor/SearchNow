@@ -34,175 +34,173 @@ var TeleRegExPattern = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][0
 var CatchAllTicketNumRegExPattern = /[A-Za-z]{2,5}[0-9]{7,9}/g;
 
 
-
-function handleMessage(request, sender, sendResponse) {
+//Determine if user selection matches an expected pattern and create the corresponding context menu if a match is found.
+function handleMessage(request, sender, sendResponse, info) {
   console.log(`A content script sent a message: ${request.greeting}`);
   sendResponse({ response: `${request.greeting}` });
-}
+    chrome.contextMenus.removeAll();
+  if (KBRegExPattern.test(request.greeting)) {
+    chrome.contextMenus.create({
+      id: 'kbNav',
+      title: 'Open article %s',
+      type: 'normal',
+      contexts: ['selection'],
+    });
+    chrome.contextMenus.create({
+      id: 'kbSearch',
+      title: 'Search KB for %s',
+      type: 'normal',
+      contexts: ['selection'],
+    });
+  } else if (CALLRegExPattern.test(request.greeting)) {
+    chrome.contextMenus.create({
+      id: 'callNav',
+      title: 'Open call %s',
+      type: 'normal',
+      contexts: ['selection'],
+    });
+  } else if (CatchAllTicketNumRegExPattern.test(request.greeting)) {
 
-chrome.runtime.onMessage.addListener(handleMessage);
-
-chrome.runtime.onInstalled.addListener((info) => {
-  chrome.contextMenus.create({
+  };
+    chrome.contextMenus.create({
+      id: 'callSearch',
+      title: 'Search calls for %s',
+      type: 'normal',
+      contexts: ['selection'],
+    });
+    chrome.contextMenus.create({
       id: 'autoNavTo',
       title: 'Open "%s" in new tab',
       type: 'normal',
       contexts: ['selection'],
     }, onCreated());
-  chrome.contextMenus.create({
+    chrome.contextMenus.create({
       id: 'autoSearch',
       title: 'Search for "%s" in new tab',
       type: 'normal',
       contexts: ['selection'],
     }, onCreated());
-  chrome.contextMenus.create({
+    chrome.contextMenus.create({
       id: 'manualSearch',
       title: 'Manual search',
       type: 'normal',
       contexts: ['selection'],
     }, onCreated());
     chrome.contextMenus.create({
-        id: 'global',
-        title: 'Global',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
-      chrome.contextMenus.create({
-        id: 'separator',
-        type: 'separator',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'global',
+      title: 'Global',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'kbChild',
-        title: 'KB',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());  
+      id: 'separator',
+      type: 'separator',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'incChild',
-        title: 'INC',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'kbChild',
+      title: 'KB',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'ritmChild',
-        title: 'RITM',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'incChild',
+      title: 'INC',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'staskChild',
-        title: 'STASK',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'ritmChild',
+      title: 'RITM',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'reqChild',
-        title: 'REQ',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'staskChild',
+      title: 'STASK',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'callChild',
-        title: 'CALL',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'reqChild',
+      title: 'REQ',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'prbChild',
-        title: 'PRB',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'callChild',
+      title: 'CALL',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'chgChild',
-        title: 'CHG',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'prbChild',
+      title: 'PRB',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'secChild',
-        title: 'SEC',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'chgChild',
+      title: 'CHG',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'chatChild',
-        title: 'CHAT',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'secChild',
+      title: 'SEC',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'ipv4Child',
-        title: 'IPv4',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'chatChild',
+      title: 'CHAT',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'emailChild',
-        title: 'Email',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'ipv4Child',
+      title: 'IPv4',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'hostnameChild',
-        title: 'Hostname',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
+      id: 'emailChild',
+      title: 'Email',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
     chrome.contextMenus.create({
-        id: 'teleChild',
-        title: 'Phone number',
-        type: 'normal',
-        contexts: ['selection'],
-        parentId: "manualSearch"
-      }, onCreated());
-  if(info.selectionText){
-    chrome.contextMenus.removeAll();
-    if(KBRegExPattern.test(info.selectionText)){
-      chrome.contextMenus.create({
-        id: 'kbNav',
-        title: 'Open article %s',
-        type: 'normal',
-        contexts: ['selection'],
-      }); 
-      chrome.contextMenus.create({
-        id: 'kbSearch',
-        title: 'Search KB for %s',
-        type: 'normal',
-        contexts: ['selection'],
-      });
-    } else if (CALLRegExPattern.test(info.selectionText)) {
-      chrome.contextMenus.create({
-        id: 'callNav',
-        title: 'Open call %s',
-        type: 'normal',
-        contexts: ['selection'],
-      });
-      chrome.contextMenus.create({
-        id: 'callSearch',
-        title: 'Search calls for %s',
-        type: 'normal',
-        contexts: ['selection'],
-      });
-    }
-  }
-})
+      id: 'hostnameChild',
+      title: 'Hostname',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
+    chrome.contextMenus.create({
+      id: 'teleChild',
+      title: 'Phone number',
+      type: 'normal',
+      contexts: ['selection'],
+      parentId: "manualSearch"
+    }, onCreated());
+}
+
+chrome.runtime.onMessage.addListener(handleMessage);
+
 
 function onCreated() {
     if (chrome.runtime.lastError) {
@@ -318,7 +316,7 @@ function autoNav(info, tab){
       });
   } else if (CALLRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({
-          url: 'https://gsa.servicenowservices.com//nav_to.do?uri=new_call.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
+          url: 'https://gsa.servicenowservices.com/nav_to.do?uri=new_call.do?sysparm_query=number=' + encodedSelectedText, index: tab.index + 1
       });
   } else if (CatchAllTicketNumRegExPattern.test(info.selectionText)) {
       chrome.tabs.create({

@@ -23,7 +23,7 @@ function notifyBackgroundPage(e) {
   }
 }
 
-document.addEventListener("contextmenu", notifyBackgroundPage);
+document.addEventListener("selectionchange", notifyBackgroundPage);
 
 
 /*chrome.commands.onCommand.addListener((command) => {
