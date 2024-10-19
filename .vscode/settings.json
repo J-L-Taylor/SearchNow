@@ -1,6 +1,7 @@
 {
-    "html.format.indentHandlebars": true,
-    "html.format.indentInnerHtml": true,
-    "regexhighlighter.stoppingRegexHighlighting": false,
-    "workbench.experimental.editSessions.enabled": true
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+  "regexhighlighter.stoppingRegexHighlighting": false,
+  "workbench.experimental.editSessions.enabled": true,
+  "prettier.configPath": "G:\\My Drive\\Files\\Scripts\\Chrome Extensions\\SearchNow\\.prettierrc"
 }

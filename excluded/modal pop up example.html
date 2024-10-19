@@ -1,0 +1,54 @@
+q: <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #myModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            resize: both;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <textarea id="myText" rows="4" cols="50"></textarea>
+        <button id="saveBtn">Save</button>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("saveBtn");
+    var textarea = document.getElementById("myText");
+
+    window.onload = function() {
+        modal.style.display = "block";
+    }
+
+    btn.onclick = function() {
+        var text = textarea.value;
+        console.log(text);
+        modal.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

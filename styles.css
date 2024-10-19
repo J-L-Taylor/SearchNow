@@ -1,76 +1,134 @@
+/* Ensure the popup has a minimum size */
 body {
-  font-family: 'Open Sans';
-  font-size: 12px;
-  position: relative;
-   }
+    min-width: 300px;
+    min-height: 200px;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    position: relative;
+}
+
+/* Flexbox container */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
 
 .box {
-      display: none;
-      width: 100%;
-   }
+    display: none;
+    width: 100%;
+}
 
-a:hover + .box,.box:hover {
-  display: block;
-  position: relative;
-  z-index: 100;
+a:hover + .box, .box:hover {
+    display: block;
+    position: relative;
+    z-index: 100;
 }
 
 #mainDiv {
-  display: flex;
-  padding: 1px;
-  margin: 1px;
-  background-color: rgb(255, 251, 251);
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: start;
-  align-content: start;
-  align-items: start;
-    }
+    display: flex;
+    padding: 1px;
+    margin: 1px;
+    background-color: rgb(255, 251, 251);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-content: start;
+    align-items: start;
+}
 
-  .flex-item:nth-child(1) {
+/* Flexbox items */
+.flex-item {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.flex-item:nth-child(1) {
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
-    }
-  
-  .flex-item:nth-child(2) {
+}
+
+.flex-item:nth-child(2) {
     order: 1;
     flex: 0 1 auto;
     align-self: auto;
-    }
-  
-  .flex-item:nth-child(3) {
+}
+
+.flex-item:nth-child(3) {
     order: 2;
     flex: 0 1 auto;
     align-self: auto;
-    }
+}
 
-  .flex-item:nth-child(4) {
+.flex-item:nth-child(4) {
     order: 3;
     flex: 0 1 auto;
     align-self: auto;
-    }
+}
 
-  .flex-item:nth-child(5) {
+.flex-item:nth-child(5) {
     order: 4;
     flex: 0 1 auto;
     align-self: auto;
-    }
+}
 
-  .flex-item:nth-child(6) {
+.flex-item:nth-child(6) {
     order: 5;
     flex: 0 1 auto;
     align-self: auto;
-    }
+}
 
-  .flex-item:nth-child(7) {
+.flex-item:nth-child(7) {
     order: 6;
     flex: 0 1 auto;
     align-self: auto;
-    }
+}
 
-  .flex-item:nth-child(8) {
+.flex-item:nth-child(8) {
     order: 7;
     flex: 0 1 auto;
     align-self: auto;
-    }
+}
+
+/* Input and select styling */
+input[type="search"], input[type="number"], input[type="time"], select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Icon button styling */
+.mdc-icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mdc-icon-button .material-icons {
+    font-size: 24px;
+}

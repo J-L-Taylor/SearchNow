@@ -10,7 +10,9 @@
   },
   "exclude": [
     "node_modules",
-    "**/node_modules/*"
+    "**/node_modules/*",
+    "excluded",
+    "**/excluded/*"
   ],
   "typeAcquisition": {"include": ["chrome"]}
 }

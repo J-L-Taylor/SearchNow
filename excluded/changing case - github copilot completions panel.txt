@@ -1,0 +1,710 @@
+Synthesizing 10/10 solutions
+
+=======
+Suggestion 1
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase(str) {
+//     if (str === str.toUpperCase()) {
+//         return str.toLowerCase();
+//     } else if (str === str.toLowerCase()) {
+//         return str.charAt(0).toUpperCase() + str.slice(1);
+//     } else {
+//         return str.split(' ').map((word) => {
+//             return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+//         }).join(' ');
+//     }
+// }
+
+// Language: javascript
+// q: What javascript code will return true if the first letter of the selected text is uppercase and false otherwise?
+// a: 
+// function isUpperCase(str) {
+//     return str[0] === str[0].toUpperCase();
+// }
+
+// Language: javascript
+// q: What javascript code will return true if the first letter of the selected text is lowercase and false otherwise?
+// a: 
+// function isLowerCase(str) {
+//     return str[0] === str[0].toLowerCase();
+// }
+
+// Language: javascript
+// q: What javascript code will return true if the first letter of the selected text is a letter and false otherwise?
+// a: 
+// function isLetter(str) {
+//     return str[0].match(/[a-z]/i);
+// }
+
+// Language: javascript
+// q: What javascript code will return true if the first letter of the selected text is a number and false otherwise?
+// a: 
+// function isNumber(str) {
+//     return str[0].match(/[0-9]/);
+// }
+
+// Language: javascript
+// q: What javascript code will return true if the selected text is all letters and false otherwise?
+// a: 
+// function isAllLetters(str) {
+//     return str.match(/[a-z]/i);
+// }
+
+// Language: javascript
+// q: What javascript code will return true if the selected text is all numbers and false otherwise?
+// a: 
+// function isAllNumbers(str) {
+//     return str.match(/[0-9]/);
+// }
+
+// Language: javascript
+// q: What javascript code will return true if the selected text is all letters and numbers and false otherwise?
+// a: 
+// function isAllLettersAndNumbers(str) {
+//     return str.match(/[a-z0-9]/i);
+// }
+
+// Language: javascript
+// q: What javascript code will return true if the selected text
+
+=======
+Suggestion 2
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase() {
+//     var txt = document.getElementById("txt");
+//     if (txt.value == txt.value.toUpperCase()) {
+//         txt.value = txt.value.toLowerCase();
+//     } else if (txt.value == txt.value.toLowerCase()) {
+//         txt.value = txt.value.charAt(0).toUpperCase() + txt.value.slice(1);
+//     } else {
+//         txt.value = txt.value.toUpperCase();
+//     }
+// }
+// function changeCase() {
+//     var txt = document.getElementById("txt");
+//     if (txt.value == txt.value.toUpperCase()) {
+//         txt.value = txt.value.toLowerCase();
+//     } else if (txt.value == txt.value.toLowerCase()) {
+//         txt.value = txt.value.charAt(0).toUpperCase() + txt.value.slice(1);
+//     } else {
+//         txt.value = txt.value.toUpperCase();
+//     }
+// }
+// function changeCase() {
+//     var txt = document.getElementById("txt");
+//     if (txt.value == txt.value.toUpperCase()) {
+//         txt.value = txt.value.toLowerCase();
+//     } else if (txt.value == txt.value.toLowerCase()) {
+//         txt.value = txt.value.charAt(0).toUpperCase() + txt.value.slice(1);
+//     } else {
+//         txt.value = txt.value.toUpperCase();
+//     }
+// }
+// function changeCase() {
+//     var txt = document.getElementById("txt");
+//     if (txt.value == txt.value.toUpperCase()) {
+//         txt.value = txt.value.toLowerCase();
+//     } else if (txt.value == txt.value.toLowerCase()) {
+//         txt.value = txt.value.charAt(0).toUpperCase() + txt.value.slice(1);
+//     } else {
+//         txt.value = txt.value.toUpperCase();
+//     }
+// }
+// function changeCase() {
+//     var txt = document.getElementById("txt");
+//     if (txt.value == txt.value.toUpperCase()) {
+//         txt.value = txt.value.toLowerCase();
+//     } else if (txt.value == txt.value.toLowerCase()) {
+//         txt.value = txt.value.charAt(0).toUpperCase() + txt.value.slice(1);
+//     } else {
+//         txt.value = txt.value.toUpperCase();
+//     }
+// }
+// function changeCase() {
+//     var txt = document.getElementById("txt");
+//     if (txt.value == txt.value.toUpperCase()) {
+//         txt.value = txt.value.toLowerCase();
+//     } else if (txt.value
+
+=======
+Suggestion 3
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: function toggleCase() { var sel = window.getSelection(); var range = sel.getRangeAt(0); var s = range.startOffset; var e = range.endOffset; var str = range.toString(); var newstr = str; if (str == str.toUpperCase()) { newstr = str.toLowerCase(); } else if (str == str.toLowerCase()) { newstr = str.toUpperCase(); } else if (str == str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})) { newstr = str.toLowerCase(); } else { newstr = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); } range.deleteContents(); range.insertNode(document.createTextNode(newstr)); range.setStart(range.startContainer, s); range.setEnd(range.endContainer, e); sel.removeAllRanges(); sel.addRange(range); }
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: function toggleCase() { var sel = window.getSelection(); var range = sel.getRangeAt(0); var s = range.startOffset; var e = range.endOffset; var str = range.toString(); var newstr = str; if (str == str.toUpperCase()) { newstr = str.toLowerCase(); } else if (str == str.toLowerCase()) { newstr = str.toUpperCase(); } else if (str == str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})) { newstr = str.toLowerCase(); } else { newstr = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); } range.deleteContents(); range.insertNode(document.createTextNode(newstr)); range.setStart(range.startContainer, s); range.setEnd(range.endContainer, e); sel.removeAllRanges(); sel.addRange(range); }
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: function toggleCase() { var sel = window.getSelection(); var range = sel.getRangeAt(0); var s =
+
+=======
+Suggestion 4
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+function changeCase(str) {
+  if (str === str.toUpperCase()) {
+    return str.toLowerCase();
+  } else if (str === str.toLowerCase()) {
+    return str.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+  } else {
+    return str.split(' ').map(word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+  }
+}
+changeCase('the quick brown fox'); // 'The Quick Brown Fox'
+changeCase('THE QUICK BROWN FOX'); // 'the quick brown fox'
+changeCase('the Quick brown Fox'); // 'THE QUICK BROWN FOX'
+// q: What javascript code will return the longest word in a string?
+// a: 
+function longestWord(str) {
+  return str.split(' ').reduce((longest, current) => longest.length > current.length ? longest : current);
+}
+longestWord('the quick brown fox'); // 'quick'
+longestWord('THE QUICK BROWN FOX'); // 'BROWN'
+longestWord('the Quick brown Fox'); // 'Quick'
+// q: What javascript code will return the shortest word in a string?
+// a: 
+function shortestWord(str) {
+  return str.split(' ').reduce((shortest, current) => shortest.length < current.length ? shortest : current);
+}
+shortestWord('the quick brown fox'); // 'the'
+shortestWord('THE QUICK BROWN FOX'); // 'THE'
+shortestWord('the Quick brown Fox'); // 'the'
+// q: What javascript code will return the longest word in a string?
+// a: 
+function longestWord(str) {
+  return str.split(' ').reduce((longest, current) => longest.length > current.length ? longest : current);
+}
+longestWord('the quick brown fox'); // 'quick'
+longestWord('THE QUICK BROWN FOX'); // 'BROWN'
+longestWord('the Quick brown Fox'); // 'Quick'
+// q: What javascript code will return the shortest word in a string?
+// a: 
+function shortestWord(str) {
+  return str.split(' ').reduce((shortest, current) => shortest.length < current.length ? shortest : current);
+}
+shortestWord('the quick brown fox'); // 'the'
+shortestWord('THE QUICK BROWN FOX'); // 'THE'
+shortestWord('the Quick brown Fox'); // '
+
+=======
+Suggestion 5
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// var v = document.activeElement.value;
+// if (v.match(/^[a-z]/)) {
+//   document.activeElement.value = v.replace(/\b\w/g, l => l.toUpperCase());
+// }
+// else if (v.match(/^[A-Z]/)) {
+//   document.activeElement.value = v.toLowerCase();
+// }
+// else if (v.match(/^[A-Z][a-z]/)) {
+//   document.activeElement.value = v.toUpperCase();
+// }
+// else {
+//   document.activeElement.value = v;
+// }
+// document.activeElement.dispatchEvent(new Event('change', {bubbles: true}));
+
+// Language: javascript
+// q: What javascript code will change the case of selected text to lower case if it is upper case and to upper case if it is lower case?
+// a: 
+// var v = document.activeElement.value;
+// if (v.match(/^[a-z]/)) {
+//   document.activeElement.value = v.toUpperCase();
+// }
+// else if (v.match(/^[A-Z]/)) {
+//   document.activeElement.value = v.toLowerCase();
+// }
+// else {
+//   document.activeElement.value = v;
+// }
+// document.activeElement.dispatchEvent(new Event('change', {bubbles: true}));
+
+// Language: javascript
+// q: What javascript code will change the case of selected text to upper case if it is lower case and to lower case if it is upper case?
+// a: 
+// var v = document.activeElement.value;
+// if (v.match(/^[a-z]/)) {
+//   document.activeElement.value = v.toUpperCase();
+// }
+// else if (v.match(/^[A-Z]/)) {
+//   document.activeElement.value = v.toLowerCase();
+// }
+// else {
+//   document.activeElement.value = v;
+// }
+// document.activeElement.dispatchEvent(new Event('change', {bubbles: true}));
+
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// var v = document.activeElement.value;
+// if (v.match(/^[a-z]/)) {
+//   document.activeElement.value = v.replace(/\b\w/g, l => l.toUpperCase());
+// }
+// else if (v.match(/^[A-Z]/)) {
+//   document.activeElement.value = v
+
+=======
+Suggestion 6
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase() {
+//     var text = document.getElementById("text");
+//     var newText = "";
+//     for (var i = 0; i < text.value.length; i++) {
+//         var char = text.value[i];
+//         if (char === char.toUpperCase()) {
+//             newText += char.toLowerCase();
+//         } else if (char === char.toLowerCase()) {
+//             newText += char.toUpperCase();
+//         } else {
+//             newText += char;
+//         }
+//     }
+//     text.value = newText;
+// }
+// function changeCase() {
+//     var text = document.getElementById("text");
+//     var newText = "";
+//     for (var i = 0; i < text.value.length; i++) {
+//         var char = text.value[i];
+//         if (char === char.toUpperCase()) {
+//             newText += char.toLowerCase();
+//         } else if (char === char.toLowerCase()) {
+//             newText += char.toUpperCase();
+//         } else {
+//             newText += char;
+//         }
+//     }
+//     text.value = newText;
+// }
+
+// 3. Write a program to toggle case of each character of the string “pakistani” (e.g. paKISTANI should be changed to PAkistani).
+
+=======
+Suggestion 7
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+var text = document.getSelection().toString();
+var newText = text;
+var firstChar = text.charAt(0);
+if (firstChar == firstChar.toLowerCase()) {
+    newText = text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+} else if (firstChar == firstChar.toUpperCase()) {
+    newText = text.toLowerCase();
+} else {
+    newText = text.toUpperCase();
+}
+document.execCommand("insertText", false, newText);
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+var text = document.getSelection().toString();
+var newText = text;
+var firstChar = text.charAt(0);
+if (firstChar == firstChar.toLowerCase()) {
+    newText = text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+} else if (firstChar == firstChar.toUpperCase()) {
+    newText = text.toLowerCase();
+} else {
+    newText = text.toUpperCase();
+}
+document.execCommand("insertText", false, newText);
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+var text = document.getSelection().toString();
+var newText = text;
+var firstChar = text.charAt(0);
+if (firstChar == firstChar.toLowerCase()) {
+    newText = text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+} else if (firstChar == firstChar.toUpperCase()) {
+    newText = text.toLowerCase();
+} else {
+    newText = text.toUpperCase();
+}
+document.execCommand("insertText", false, newText);
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+var text = document.getSelection().toString();
+var newText = text;
+var firstChar = text.charAt(0);
+if (firstChar == firstChar.toLowerCase()) {
+    newText = text.replace(/\w\S*/g, function(txt){return
+
+=======
+Suggestion 8
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// var txt = document.getSelection().toString();
+// if (txt == txt.toLowerCase()) {
+//     document.execCommand('insertText', false, txt.toTitleCase());
+// } else if (txt == txt.toUpperCase()) {
+//     document.execCommand('insertText', false, txt.toLowerCase());
+// } else if (txt == txt.toTitleCase()) {
+//     document.execCommand('insertText', false, txt.toUpperCase());
+// }
+// function toTitleCase() {
+//     return this.replace(/\w\S*/g, function (txt) {
+//         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+//     });
+// }
+
+=======
+Suggestion 9
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase() {
+// 	var str = document.getSelection().toString();
+// 	var firstChar = str.charAt(0);
+// 	var rest = str.slice(1);
+// 	var titleCase = firstChar.toUpperCase() + rest.toLowerCase();
+// 	var lowerCase = str.toLowerCase();
+// 	var upperCase = str.toUpperCase();
+// 	var currentCase = document.getElementById('case').value;
+// 	var newCase = currentCase === 'title' ? titleCase : currentCase === 'lower' ? lowerCase : upperCase;
+// 	return newCase;
+// }
+// document.execCommand('insertText', false, changeCase());
+
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase() {
+// 	var str = document.getSelection().toString();
+// 	var firstChar = str.charAt(0);
+// 	var rest = str.slice(1);
+// 	var titleCase = firstChar.toUpperCase() + rest.toLowerCase();
+// 	var lowerCase = str.toLowerCase();
+// 	var upperCase = str.toUpperCase();
+// 	var currentCase = document.getElementById('case').value;
+// 	var newCase = currentCase === 'title' ? titleCase : currentCase === 'lower' ? lowerCase : upperCase;
+// 	return newCase;
+// }
+// document.execCommand('insertText', false, changeCase());
+
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase() {
+// 	var str = document.getSelection().toString();
+// 	var firstChar = str.charAt(0);
+// 	var rest = str.slice(1);
+// 	var titleCase = firstChar.toUpperCase() + rest.toLowerCase();
+// 	var lowerCase = str.toLowerCase();
+// 	var upperCase = str.toUpperCase();
+// 	var currentCase = document.getElementById('case').value;
+// 	var newCase = currentCase === 'title' ? titleCase : currentCase === 'lower' ? lowerCase : upperCase;
+// 	return newCase;
+// }
+// document.execCommand('insertText', false, changeCase());
+
+//
+
+=======
+Suggestion 10
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+function changeCase() {
+    var selectedText = document.getSelection().toString();
+    if (selectedText == selectedText.toUpperCase()) {
+        document.execCommand('insertText', false, selectedText.toLowerCase());
+    } else if (selectedText == selectedText.toLowerCase()) {
+        document.execCommand('insertText', false, selectedText.charAt(0).toUpperCase() + selectedText.slice(1));
+    } else {
+        var newString = '';
+        for (var i = 0; i < selectedText.length; i++) {
+            if (selectedText.charAt(i) == selectedText.charAt(i).toUpperCase()) {
+                newString += selectedText.charAt(i).toLowerCase();
+            } else {
+                newString += selectedText.charAt(i).toUpperCase();
+            }
+        }
+        document.execCommand('insertText', false, newString);
+    }
+}
+// q: What javascript code will change the case of selected text to upper case if it is lower case and to lower case if it is upper case?
+// a: 
+function changeCase() {
+    var selectedText = document.getSelection().toString();
+    if (selectedText == selectedText.toUpperCase()) {
+        document.execCommand('insertText', false, selectedText.toLowerCase());
+    } else {
+        document.execCommand('insertText', false, selectedText.toUpperCase());
+    }
+}
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case?
+// a: 
+function changeCase() {
+    var selectedText = document.getSelection().toString();
+    if (selectedText == selectedText.toUpperCase()) {
+        document.execCommand('insertText', false, selectedText.toLowerCase());
+    } else {
+        document.execCommand('insertText', false, selectedText.charAt(0).toUpperCase() + selectedText.slice(1));
+    }
+}
+// q: What javascript code will change the case of selected text to upper case if it is lower case and to title case if it is upper case?
+// a: 
+function changeCase() {
+    var selectedText = document.getSelection().toString();
+    if (selectedText == selectedText.toUpperCase()) {
+        document.execCommand('insertText', false, selectedText.charAt(0).toUpperCase() + selectedText.slice(1));
+    } else {
+        document.execCommand('insertText', false, selectedText.toUpperCase());
+    }
+}
+// q: What javascript code will change the case of selected text to lower case
+
+=======
+Suggestion 9
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase() {
+// 	var str = document.getSelection().toString();
+// 	var firstChar = str.charAt(0);
+// 	var rest = str.slice(1);
+// 	var titleCase = firstChar.toUpperCase() + rest.toLowerCase();
+// 	var lowerCase = str.toLowerCase();
+// 	var upperCase = str.toUpperCase();
+// 	var currentCase = document.getElementById('case').value;
+// 	var newCase = currentCase === 'title' ? titleCase : currentCase === 'lower' ? lowerCase : upperCase;
+// 	return newCase;
+// }
+// document.execCommand('insertText', false, changeCase());
+
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase() {
+// 	var str = document.getSelection().toString();
+// 	var firstChar = str.charAt(0);
+// 	var rest = str.slice(1);
+// 	var titleCase = firstChar.toUpperCase() + rest.toLowerCase();
+// 	var lowerCase = str.toLowerCase();
+// 	var upperCase = str.toUpperCase();
+// 	var currentCase = document.getElementById('case').value;
+// 	var newCase = currentCase === 'title' ? titleCase : currentCase === 'lower' ? lowerCase : upperCase;
+// 	return newCase;
+// }
+// document.execCommand('insertText', false, changeCase());
+
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// function changeCase() {
+// 	var str = document.getSelection().toString();
+// 	var firstChar = str.charAt(0);
+// 	var rest = str.slice(1);
+// 	var titleCase = firstChar.toUpperCase() + rest.toLowerCase();
+// 	var lowerCase = str.toLowerCase();
+// 	var upperCase = str.toUpperCase();
+// 	var currentCase = document.getElementById('case').value;
+// 	var newCase = currentCase === 'title' ? titleCase : currentCase === 'lower' ? lowerCase : upperCase;
+// 	return newCase;
+// }
+// document.execCommand('insertText', false, changeCase());
+
+//
+
+=======
+Suggestion 7
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+var text = document.getSelection().toString();
+var newText = text;
+var firstChar = text.charAt(0);
+if (firstChar == firstChar.toLowerCase()) {
+    newText = text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+} else if (firstChar == firstChar.toUpperCase()) {
+    newText = text.toLowerCase();
+} else {
+    newText = text.toUpperCase();
+}
+document.execCommand("insertText", false, newText);
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+var text = document.getSelection().toString();
+var newText = text;
+var firstChar = text.charAt(0);
+if (firstChar == firstChar.toLowerCase()) {
+    newText = text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+} else if (firstChar == firstChar.toUpperCase()) {
+    newText = text.toLowerCase();
+} else {
+    newText = text.toUpperCase();
+}
+document.execCommand("insertText", false, newText);
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+var text = document.getSelection().toString();
+var newText = text;
+var firstChar = text.charAt(0);
+if (firstChar == firstChar.toLowerCase()) {
+    newText = text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+} else if (firstChar == firstChar.toUpperCase()) {
+    newText = text.toLowerCase();
+} else {
+    newText = text.toUpperCase();
+}
+document.execCommand("insertText", false, newText);
+// Language: javascript
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+var text = document.getSelection().toString();
+var newText = text;
+var firstChar = text.charAt(0);
+if (firstChar == firstChar.toLowerCase()) {
+    newText = text.replace(/\w\S*/g, function(txt){return
+
+=======
+Suggestion 8
+
+// q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+// a: 
+// var txt = document.getSelection().toString();
+// if (txt == txt.toLowerCase()) {
+//     document.execCommand('insertText', false, txt.toTitleCase());
+// } else if (txt == txt.toUpperCase()) {
+//     document.execCommand('insertText', false, txt.toLowerCase());
+// } else if (txt == txt.toTitleCase()) {
+//     document.execCommand('insertText', false, txt.toUpperCase());
+// }
+// function toTitleCase() {
+//     return this.replace(/\w\S*/g, function (txt) {
+//         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+//     });
+// }
+
+// // q: What javascript code will change the case of selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case?
+
+function changeCase() {
+    var txt = document.getElementById("txt");
+    if (txt.value == txt.value.toUpperCase()) {
+        txt.value = txt.value.toLowerCase();
+    } else if (txt.value == txt.value.toLowerCase()) {
+        txt.value = txt.value.charAt(0).toUpperCase() + txt.value.slice(1);
+    } else {
+        txt.value = txt.value.toUpperCase();
+    }
+}
+
+function toggleCase() { var sel = window.getSelection(); var range = sel.getRangeAt(0); var s = range.startOffset; var e = range.endOffset; var str = range.toString(); var newstr = str; if (str == str.toUpperCase()) { newstr = str.toLowerCase(); } else if (str == str.toLowerCase()) { newstr = str.toUpperCase(); } else if (str == str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})) { newstr = str.toLowerCase(); } else { newstr = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); } range.deleteContents(); range.insertNode(document.createTextNode(newstr)); range.setStart(range.startContainer, s); range.setEnd(range.endContainer, e); sel.removeAllRanges(); sel.addRange(range); }
+
+function changeCase(str) {
+  if (str === str.toUpperCase()) {
+    return str.toLowerCase();
+  } else if (str === str.toLowerCase()) {
+    return str.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+  } else {
+    return str.split(' ').map(word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+  }
+}
+changeCase('the quick brown fox'); // 'The Quick Brown Fox'
+changeCase('THE QUICK BROWN FOX'); // 'the quick brown fox'
+changeCase('the Quick brown Fox'); // 'THE QUICK BROWN FOX'
+
+
+// a: 
+function titleCase(str) {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+    // You do not need to check if i is larger than splitStr length, as your for does that for you
+    // Assign it back to the array
+    splitStr[i] =
+      splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  // Directly return the joined string
+  return splitStr.join(' ');
+}
+function lowerCase(str) {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+    // You do not need to check if i is larger than splitStr length, as your for does that for you
+    // Assign it back to the array
+    splitStr[i] = splitStr[i].charAt(0).toLowerCase() + splitStr[i].substring(1);
+  }
+  // Directly return the joined string
+  return splitStr.join(' ');
+}
+function upperCase(str) {
+  var splitStr = str.toUpperCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+    // You do not need to check if i is larger than splitStr length, as your for does that for you
+    // Assign it back to the array
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  // Directly return the joined string
+  return splitStr.join(' ');
+}
+
+
+// 1. get selected text
+// 2. change the case of the selected text to title case if it is lower case and to lower case if it is upper case and to upper case if it is title case
+// 3. replace the selected text with the modified text
+// 4. return the modified text
+// 5. display the modified text in a popup
+// 6. display the modified text in a new tab
+var selectedText = window.getSelection().toString();
+var modifiedText = selectedText;
+if (selectedText === selectedText.toUpperCase()) {
+  modifiedText = selectedText.toLowerCase();
+} else if (selectedText === selectedText.toLowerCase()) {
+  modifiedText = selectedText.replace(
+    /\b(\w)/g,
+    (w) => w.toUpperCase()
+  );
+} else {
+  modifiedText = selectedText.replace(
+    /\b(\w)/g,
+    (w) => w.toLowerCase()
+  );
+}
+// 5. display the modified text in a popup
+alert(modifiedText);
+
+// q: What javascript code will return the longest word in a string?
+// a: 
+function longestWord(str) {
+  return str.split(' ').reduce((longest, current) => longest.length > current.length ? longest : current);
+}
+longestWord('the quick brown fox'); // 'quick'
+longestWord('THE QUICK BROWN FOX'); // 'BROWN'
+longestWord('the Quick brown Fox'); // 'Quick'
+// q: What javascript code will return the shortest word in a string?
+// a: 
+function shortestWord(str) {
+  return str.split(' ').reduce((shortest, current) => shortest.length < current.length ? shortest : current);
+}
+shortestWord('the quick brown fox'); // 'the'
+shortestWord('THE QUICK BROWN FOX'); // 'THE'
+shortestWord('the Quick brown Fox'); // 'the'
+// q: What javascript code will return the longest word in a string?
+// a: 
+function longestWord(str) {
+  return str.split(' ').reduce((longest, current) => longest.length > current.length ? longest : current);
+}
+longestWord('the quick brown fox'); // 'quick'
+longestWord('THE QUICK BROWN FOX'); // 'BROWN'
+longestWord('the Quick brown Fox'); // 'Quick'
+// q: What javascript code will return the shortest word in a string?
+// a: 
+function shortestWord(str) {
+  return str.split(' ').reduce((shortest, current) => shortest.length < current.length ? shortest : current);
+}
+shortestWord('the quick brown fox'); // 'the'
+shortestWord('THE QUICK BROWN FOX'); // 'THE'
+shortestWord('the Quick brown Fox'); // '
