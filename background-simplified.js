@@ -1,7 +1,11 @@
 import { autoNav } from './handlers/autoNav.js';
 import { autoSearch } from './handlers/autoSearch.js';
+import * as eventListeners from './eventListeners.js';
 
 /* jshint esversion: 6*/
+
+// Initialize event listeners
+eventListeners.setupEventListeners();
 
 // Create context menu entries
 chrome.runtime.onInstalled.addListener(() => {

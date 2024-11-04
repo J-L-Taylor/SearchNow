@@ -4,29 +4,49 @@
 // @ts-nocheck
 
 document.addEventListener('DOMContentLoaded', function() {
-  var searcherInput = document.getElementById('searcher');
+    const searcherInput = document.getElementById('searcher');
+    const customSearchEnginesDropdown = document.getElementById('custom-search-engines');
 
-  // Get the selected text from the active tab
-  chrome.tabs.executeScript({
-    code: 'window.getSelection().toString();'
-  }, function(selection) {
-    if (selection && selection[0]) {
-      searcherInput.value = selection[0];
-    }
-  });
+    // Read and parse the CSV file
+    fetch('custom_search_engines.csv')
+        .then(response => response.text())
+        .then(data => {
+            const rows = data.split('\n');
+            rows.forEach(row => {
+                const [title, url, faviconUrl] = row.split(',');
+                if (title && url && faviconUrl) {
+                    const option = document.createElement('option');
+                    option.text = title;
+                    option.value = url;
+                    option.style.backgroundImage = `url(${faviconUrl})`;
+                    option.style.backgroundRepeat = 'no-repeat';
+                    option.style.backgroundPosition = 'left center';
+                    option.style.paddingLeft = '20px'; // Adjust padding to make space for the icon
+                    customSearchEnginesDropdown.add(option);
+                }
+            });
+        });
 
-  var checkHomePageButton = document.getElementById('homePage');
-  checkHomePageButton.addEventListener('click', function() {
-    chrome.tabs.create({
-      url: 'https://gsa.servicenowservices.com/nav_to.do?uri=%2Fhome.do'
+    // Handle dropdown selection
+    customSearchEnginesDropdown.addEventListener('change', function() {
+        const selectedUrl = customSearchEnginesDropdown.value;
+        if (selectedUrl) {
+            const query = searcherInput.value;
+            const finalUrl = selectedUrl.replace(/{searchTerms}/g, encodeURIComponent(query));
+            chrome.tabs.create({ url: finalUrl });
+        }
     });
-  }, false);
 
-  var checkSubmitButton = document.getElementById('submit');
-  checkSubmitButton.addEventListener('click', function() {
-    var query = searcherInput.value;
-    chrome.tabs.create({
-      url: 'https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search=' + query
+    document.getElementById('homePage').addEventListener('click', function() {
+        chrome.tabs.create({
+            url: 'https://gsa.servicenowservices.com/nav_to.do?uri=%2Fhome.do'
+        });
     });
-  }, false);
-}, false);
+
+    document.getElementById('submit').addEventListener('click', function() {
+        const query = searcherInput.value;
+        chrome.tabs.create({
+            url: 'https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search=' + query
+        });
+    });
+});

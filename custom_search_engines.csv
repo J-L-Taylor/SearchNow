@@ -1,0 +1,33 @@
+title,url,favicon_url
+Approved Software,https://gsa.servicenowservices.com/u_gsa_approved_software_list.do?sysparm_query=u_active%3Dtrue%5EnameLIKE{searchTerms}&sysparm_list_header_search=true,https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Assets,https://gsa.servicenowservices.com/alm_asset_list.do?sysparm_query=asset_tagLIKE{searchTerms},https://gsa.servicenowservices.com/favicon.ico?v=5
+Calls,https://gsa.servicenowservices.com/new_call_list.do?sysparm_query=number%3D{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Change requests,https://gsa.servicenowservices.com/change_request_list.do?sysparm_query=%5EGOTO123TEXTQUERY321%3D{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Computers assigned to...,https://gsa.servicenowservices.com/cmdb_ci_computer_list.do?sysparm_query=assigned_to.nameLIKE{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Department of profiles,https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=nameSTARTSWITHDepartment%5EnameLIKE{searchTerms}&sysparm_first_row=1&sysparm_view=itil,https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Global,https://gsa.servicenowservices.com/$sn_global_search_results.do?sysparm_search={searchTerms},https://gsa.servicenowservices.com/favicon.ico
+Go to KB article,https://gsa.servicenowservices.com/kb_view.do?sysparm_article={searchTerms},https://gsa.servicenowservices.com/favicon.ico
+Go to Task record,https://gsa.servicenowservices.com/nav_to.do?uri=task.do?sysparm_query=number={searchTerms},https://gsa.servicenowservices.com/favicon.ico
+Groups,https://gsa.servicenowservices.com/sys_user_group_list.do?sysparm_query=123TEXTQUERY321%3D{searchTerms},https://gsa.servicenowservices.com/favicon.ico?v=5
+Hostnames,https://gsa.servicenowservices.com/cmdb_ci_computer_list.do?sysparm_query=nameLIKE{searchTerms}%5EORasset_tagLIKE{searchTerms}%5EORserial_numberLIKE{searchTerms}%5EORfqdnLIKE{searchTerms}%5EORdns_domainLIKE{searchTerms},
+IP Addresses,https://gsa.servicenowservices.com/cmdb_ci_ip_address_list.do?sysparm_query=ip_addressLIKE{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Incident,https://gsa.servicenowservices.com/incident_list.do?sysparm_query=123TEXTQUERY321%3D%22{searchTerms}%22,https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+KB,https://gsa.servicenowservices.com/$knowledge.do?sysparm_type_filter=all&query={searchTerms}&sysparm_order=relevancy,https://gsa.servicenowservices.com/favicon.ico
+Knowledge List View,https://gsa.servicenowservices.com/kb_knowledge_list.do?sysparm_query=GOTO123TEXTQUERY321={searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Locations,https://gsa.servicenowservices.com/cmn_location_list.do?sysparm_query=%5EGOTO123TEXTQUERY321%3D{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+My INCs with Short descriptions containing,https://gsa.servicenowservices.com/incident_list.do?sysparm_query=opened_by%3D1eb231546f591a00ca0c5d412e3ee49e%5EORopened_by%3Dce24eb501b54b41023d920efe54bcbd8%5Eshort_descriptionLIKE{searchTerms},https://gsa.servicenowservices.com/favicon.ico?v=5
+Opened by old SN and short desc like,https://gsa.servicenowservices.com/incident_list.do?sysparm_query=opened_by%3D1eb231546f591a00ca0c5d412e3ee49e%5Eshort_descriptionLIKE{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Phones,https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=nameLIKE{searchTerms}%5EORphoneLIKE{searchTerms}%5EORmobile_phoneLIKE{searchTerms}%5EORhome_phoneLIKE{searchTerms},
+Public KB,https://gsa.servicenowservices.com/sp/?id=search&spa=1&t=kb&q={searchTerms},https://gsa.servicenowservices.com/favicon.ico
+REQs,https://gsa.servicenowservices.com/sc_request_list.do?sysparm_query=123TEXTQUERY321%3D{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+RITMs,https://gsa.servicenowservices.com/sc_req_item_list.do?sysparm_query=123TEXTQUERY321%3D{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+RITMs Opened by,https://gsa.servicenowservices.com/now/nav/ui/classic/params/target/sc_req_item_list.do%3Fsysparm_query%3Dopened_byLIKE{searchTerms}%26sysparm_filter_pinned%3Dtrue,
+Report Home Details - Report Name Contains,https://gsa.servicenowservices.com/report_home_details_list.do?sysparm_query=rep_sys_nameLIKE{searchTerms}&sysparm_list_header_search=true,https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+STASKs,https://gsa.servicenowservices.com/sc_task_list.do?sysparm_query=123TEXTQUERY321%3D{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Search CSIs,https://gsa.servicenowservices.com/u_gsa_item_list.do?sysparm_query=u_subcategory.u_category.u_application%3DIncident%5Eu_active%3Dtrue%5Eu_subcategory.u_category.u_help_deskLIKE74fe37c359a79000ce3dbe8e8db2a31b%5Eu_csiLIKE{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Security INCs,https://gsa.servicenowservices.com/u_security_inc_list.do?sysparm_query=123TEXTQUERY321%3D{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Service Catalog Items,https://gsa.servicenowservices.com/sp/?id=search&spa=1&t=sc&q={searchTerms},https://gsa.servicenowservices.com/favicon.ico
+Table access check (use actual table name as searchTerm/%s),https://gsa.servicenowservices.com/{searchTerms}_list.do,https://gsa.servicenowservices.com/favicon.ico
+Tables,https://gsa.servicenowservices.com/sys_db_object_list.do?sysparm_query=labelLIKE{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Tasks,https://gsa.servicenowservices.com/task_list.do?sysparm_query=123TEXTQUERY321%3D{searchTerms},https://gsa.servicenowservices.com/images/mobile/apple_touch_snc.png
+Users,https://gsa.servicenowservices.com/sys_user_list.do?sysparm_query=u_display_nameLIKE{searchTerms}%5EORuser_nameLIKE{searchTerms}%5EORemailLIKE{searchTerms}%5EORnameLIKE{searchTerms},
