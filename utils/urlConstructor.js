@@ -1,4 +1,4 @@
-// utils/urlConstructor.ts
-export function constructUrl(base: string, path: string, query: string): string {
+// utils/urlConstructor.js
+export function constructUrl(base, path, query) {
     return `${base}${path}?sysparm_query=${query}`;
 }

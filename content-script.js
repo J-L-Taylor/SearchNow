@@ -1,6 +1,5 @@
 /* jshint moz:true */
 /* jshint esversion: 6*/
-// @ts-nocheck
 
 function handleResponse(message) {
   alert(`Message from the background script: ${message.response}`);
@@ -14,12 +13,10 @@ function notifyBackgroundPage() {
   const selection = document.getSelection();
   if (selection && selection.type === "Range") {
     const selectedText = selection.toString().trim();
-    if (selectedText) {
       chrome.runtime.sendMessage({ greeting: selectedText })
         .then(handleResponse)
         .catch(handleError);
     }
-  }
 }
 
 document.addEventListener("selectionchange", notifyBackgroundPage);

@@ -38,6 +38,6 @@ export function handleNavigation(info, tab) {
     }
 }
 
-function openTab(url: string, index: number) {
+function openTab(url, index) {
     chrome.tabs.create({ url, index: index + 1 });
 }
