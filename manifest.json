@@ -4,7 +4,7 @@
   "manifest_version": 3,
   "version": "0.9",
   "background": {
-    "service_worker": "background-simplified.js",
+    "service_worker": "background.js",
     "type": "module"
   },
   "icons": {
@@ -27,7 +27,6 @@
     {
       "matches": ["http://*/*", "https://*/*", "file:///*/*"],
       "css": ["styles.css"],
-      "js": ["content-script-hyperlinker.js"],
       "run_at": "document_end"
     }
   ],

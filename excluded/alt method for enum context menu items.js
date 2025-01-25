@@ -32,7 +32,7 @@ contextMenuItems.forEach(item => {
     id: item.id,
     title: item.title,
     parentId: "main",
-    contexts: item.contexts
+    contexts: item.contexts,
     onclick: (info, tab) => {
       // Open a popup window
     chrome.runtime.sendMessage({ text: info.selectionText });
